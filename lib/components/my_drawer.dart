@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/components/my_drawer_tile.dart';
+import 'package:food_delivery_app/pages/settings_page.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
@@ -35,6 +36,11 @@ class MyDrawer extends StatelessWidget {
           //settings list tile
           MyDrawerTile(text: "Settings", icon: Icons.settings, onTap: () {
             Navigator.pop(context);
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const SettingsPage(),
+              ),
+            );
           }),
 
           Spacer(),
