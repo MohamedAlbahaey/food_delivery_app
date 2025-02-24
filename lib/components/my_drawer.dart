@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_delivery_app/components/my_drawer_tile.dart';
 
 class MyDrawer extends StatelessWidget {
   const MyDrawer({super.key});
@@ -24,12 +25,25 @@ class MyDrawer extends StatelessWidget {
             child: Divider(
               color: Theme.of(context).colorScheme.secondary,
             ),
-          )
+          ),
+
           //home list tile
+          MyDrawerTile(text: "Home", icon: Icons.home, onTap: () {
+            Navigator.pop(context);
+          }),
 
           //settings list tile
+          MyDrawerTile(text: "Settings", icon: Icons.settings, onTap: () {
+            Navigator.pop(context);
+          }),
+
+          Spacer(),
 
           //logout list tile
+          MyDrawerTile(text: "Logout", icon: Icons.logout, onTap: () {}),
+
+          const SizedBox(height: 25),
+
         ],
       ),
     );
