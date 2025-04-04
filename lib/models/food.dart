@@ -1,8 +1,8 @@
 //food items
 class Food {
   final String name;
-  final String imageUrl;
   final String description;
+  final String imageUrl;
   final double price;
   final FoodCategory category;
   final List<FoodAddon> avaliableAddons;
@@ -15,12 +15,13 @@ class Food {
     required this.category,
     required this.avaliableAddons,
   });
-  
+
   @override
   String toString() {
     return 'Food{name: $name, imageUrl: $imageUrl, description: $description, price: $price}';
   }
 }
+
 //food categories
 enum FoodCategory {
   burgers,

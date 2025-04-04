@@ -6,6 +6,7 @@ import 'package:food_delivery_app/components/my_description_box.dart';
 import 'package:food_delivery_app/components/my_drawer.dart';
 import 'package:food_delivery_app/components/my_sliver_app_bar.dart';
 import 'package:food_delivery_app/components/my_tab_bar.dart';
+import 'package:food_delivery_app/models/food.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -14,14 +15,16 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin {
+class _HomePageState extends State<HomePage>
+    with SingleTickerProviderStateMixin {
   //tab controller
-  late TabController _tabController; 
+  late TabController _tabController;
 
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 3,vsync: this);
+    _tabController =
+        TabController(length: FoodCategory.values.length, vsync: this);
   }
 
   @override
@@ -37,24 +40,23 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
         headerSliverBuilder: (context, innerBoxIsScrolled) => [
           MySliverAppBar(
             title: MyTabBar(tabController: _tabController),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Divider(
-                  indent: 25,
-                  endIndent: 25,
-                  color: Theme.of(context).colorScheme.secondary,
-                ),
+            child: Column(mainAxisAlignment: MainAxisAlignment.end, children: [
+              Divider(
+                indent: 25,
+                endIndent: 25,
+                color: Theme.of(context).colorScheme.secondary,
+              ),
 
-                //My current location
-                MyCurrentLocation(),
+              //My current location
+              MyCurrentLocation(),
 
-                //description box
-                MyDescriptionBox(),
+              //description box
+              MyDescriptionBox(),
 
-                SizedBox(height: 40,),
-              ]
-            ),
+              SizedBox(
+                height: 40,
+              ),
+            ]),
           ),
         ],
         body: TabBarView(
@@ -81,6 +83,22 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
               itemCount: 5,
               itemBuilder: (context, index) => ListTile(
                 title: Text("3rd Item $index"),
+              ),
+            ),
+
+            //fourth tab
+            ListView.builder(
+              itemCount: 5,
+              itemBuilder: (context, index) => ListTile(
+                title: Text("4th Item $index"),
+              ),
+            ),
+
+            //fifth tab
+            ListView.builder(
+              itemCount: 5,
+              itemBuilder: (context, index) => ListTile(
+                title: Text("5th Item $index"),
               ),
             ),
           ],
