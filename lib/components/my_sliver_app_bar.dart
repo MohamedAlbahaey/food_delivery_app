@@ -19,14 +19,12 @@ class MySliverAppBar extends StatelessWidget {
       collapsedHeight: 120,
       floating: false,
       pinned: true,
-
       actions: [
         IconButton(
           icon: Icon(Icons.shopping_cart_outlined),
           onPressed: () {},
         ),
       ],
-
       flexibleSpace: FlexibleSpaceBar(
         background: Padding(
           padding: const EdgeInsets.only(bottom: 50.0),

@@ -32,7 +32,6 @@ enum FoodCategory {
 }
 
 //food addons
-
 class FoodAddon {
   String name;
   double price;
