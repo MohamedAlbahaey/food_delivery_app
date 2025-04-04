@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class MyCurrentLocation extends StatefulWidget {
-  MyCurrentLocation({super.key});
+  const MyCurrentLocation({super.key});
 
   @override
   State<MyCurrentLocation> createState() => _MyCurrentLocationState();

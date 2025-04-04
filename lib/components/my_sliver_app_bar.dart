@@ -15,14 +15,14 @@ class MySliverAppBar extends StatelessWidget {
     return SliverAppBar(
       title: Text("Sunset Diner"),
       backgroundColor: Theme.of(context).colorScheme.surface,
-      expandedHeight: 340,
-      collapsedHeight: 100,
+      expandedHeight: 380,
+      collapsedHeight: 120,
       floating: false,
       pinned: true,
 
       actions: [
         IconButton(
-          icon: Icon(Icons.shopping_cart),
+          icon: Icon(Icons.shopping_cart_outlined),
           onPressed: () {},
         ),
       ],
