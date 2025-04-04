@@ -26,6 +26,7 @@ class MyTabBar extends StatelessWidget {
     );
   }
 
+  //capitalize first letter of string
   String captilizeFirstLetter(String text) {
     if (text.isEmpty) return "";
     String capitalizedText = text[0].toUpperCase() + text.substring(1);
