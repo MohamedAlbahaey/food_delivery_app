@@ -19,6 +19,10 @@ class MyTabBar extends StatelessWidget {
     return TabBar(
       controller: tabController,
       tabs: _buildCategoryTabs(),
+      labelStyle: TextStyle(
+        fontSize: 18,
+      ),
+      labelPadding: EdgeInsets.all(0),
     );
   }
 }

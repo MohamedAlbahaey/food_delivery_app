@@ -32,6 +32,7 @@ class MySliverAppBar extends StatelessWidget {
         ),
         title: title,
         centerTitle: true,
+        expandedTitleScale: 1,
       ),
     );
   }
