@@ -9,7 +9,7 @@ class MyTabBar extends StatelessWidget {
   List<Tab> _buildCategoryTabs() {
     return FoodCategory.values.map((category) {
       return Tab(
-        text: category.toString().split('.').last,
+        text: captilizeFirstLetter(category.toString().split('.').last),
       );
     }).toList();
   }
@@ -24,5 +24,11 @@ class MyTabBar extends StatelessWidget {
       ),
       labelPadding: EdgeInsets.all(0),
     );
+  }
+
+  String captilizeFirstLetter(String text) {
+    if (text.isEmpty) return "";
+    String capitalizedText = text[0].toUpperCase() + text.substring(1);
+    return capitalizedText;
   }
 }
