@@ -381,18 +381,6 @@ class Restaurant {
   // Getter to access the menu
   List<Food> get menu => _menu;
 
-  // Method to get food items by category
-  List<Food> getFoodByCategory(FoodCategory category) {
-    return _menu.where((food) => food.category == category).toList();
-  }
-
-  // Method to get food items by name
-  List<Food> getFoodByName(String name) {
-    return _menu
-        .where((food) => food.name.toLowerCase().contains(name.toLowerCase()))
-        .toList();
-  }
-
   // Method to add food to the cart
   // Method to remove food from the cart
   // Method to get the total price of the cart

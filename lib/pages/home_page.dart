@@ -59,47 +59,7 @@ class _HomePageState extends State<HomePage>
         ],
         body: TabBarView(
           controller: _tabController,
-          children: [
-            //first tab
-            ListView.builder(
-              itemCount: 5,
-              itemBuilder: (context, index) => ListTile(
-                title: Text("1st Item $index"),
-              ),
-            ),
-
-            //second tab
-            ListView.builder(
-              itemCount: 5,
-              itemBuilder: (context, index) => ListTile(
-                title: Text("2nd Item $index"),
-              ),
-            ),
-
-            //third tab
-            ListView.builder(
-              itemCount: 5,
-              itemBuilder: (context, index) => ListTile(
-                title: Text("3rd Item $index"),
-              ),
-            ),
-
-            //fourth tab
-            ListView.builder(
-              itemCount: 5,
-              itemBuilder: (context, index) => ListTile(
-                title: Text("4th Item $index"),
-              ),
-            ),
-
-            //fifth tab
-            ListView.builder(
-              itemCount: 5,
-              itemBuilder: (context, index) => ListTile(
-                title: Text("5th Item $index"),
-              ),
-            ),
-          ],
+          children: getFoodInThisCategory(),
         ),
       ),
       drawer: MyDrawer(),
