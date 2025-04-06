@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:food_delivery_app/components/my_current_location.dart';
 import 'package:food_delivery_app/components/my_description_box.dart';
 import 'package:food_delivery_app/components/my_drawer.dart';
+import 'package:food_delivery_app/components/my_food_tile.dart';
 import 'package:food_delivery_app/components/my_sliver_app_bar.dart';
 import 'package:food_delivery_app/components/my_tab_bar.dart';
 import 'package:food_delivery_app/models/food.dart';
+import 'package:food_delivery_app/models/restaurant.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -29,6 +32,42 @@ class _HomePageState extends State<HomePage>
   void dispose() {
     _tabController.dispose();
     super.dispose();
+  }
+
+  // sort out and return list of food items that belong to the category
+  List<Food> _filterMenuByCategory(FoodCategory category, List<Food> fullmenu) {
+    return fullmenu.where((food) => food.category == category).toList();
+  }
+
+  // return list of food items that belong to the category
+  // List<Widget> getFoodInThisCategory(List<Food> fullmenu) {
+  //   return FoodCategory.values.map((category) {
+  //     List<Food> categoryMenu = _filterMenuByCategory(category, fullmenu);
+
+  //     return ListView.builder(
+  //         itemCount: categoryMenu.length,
+  //         physics: const NeverScrollableScrollPhysics(),
+  //         padding: EdgeInsets.zero,
+  //         itemBuilder: (context, index) {
+  //           return MyFoodTile(food: food, onTap: () {});
+  //         });
+  //   }).toList();
+  // }
+
+  List<Widget> getFoodInThisCategory(List<Food> fullmenu) {
+    return FoodCategory.values.map((category) {
+      List<Food> categoryMenu = _filterMenuByCategory(category, fullmenu);
+
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          ...categoryMenu
+              .map((food) => MyFoodTile(food: food, onTap: () {}))
+              .toList(),
+          const SizedBox(height: 16), // spacing between categories
+        ],
+      );
+    }).toList();
   }
 
   @override
@@ -57,9 +96,11 @@ class _HomePageState extends State<HomePage>
             ]),
           ),
         ],
-        body: TabBarView(
-          controller: _tabController,
-          children: getFoodInThisCategory(),
+        body: Consumer<Restaurant>(
+          builder: (context, restaurant, child) => TabBarView(
+            controller: _tabController,
+            children: getFoodInThisCategory(restaurant.menu),
+          ),
         ),
       ),
       drawer: MyDrawer(),
