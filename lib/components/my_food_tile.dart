@@ -14,7 +14,7 @@ class MyFoodTile extends StatelessWidget {
         GestureDetector(
             onTap: onTap,
             child: Padding(
-              padding: const EdgeInsets.all(15.0),
+              padding: const EdgeInsets.all(0),
               child: Row(
                 children: [
                   // food details

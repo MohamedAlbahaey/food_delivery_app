@@ -47,8 +47,8 @@ class _HomePageState extends State<HomePage>
 
       return ListView.builder(
           itemCount: categoryMenu.length,
-          physics: const NeverScrollableScrollPhysics(),
           padding: EdgeInsets.zero,
+          physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (context, index) {
             final food = categoryMenu[index];
             return MyFoodTile(food: food, onTap: () {});
@@ -62,24 +62,21 @@ class _HomePageState extends State<HomePage>
       body: NestedScrollView(
         headerSliverBuilder: (context, innerBoxIsScrolled) => [
           MySliverAppBar(
-            title: MyTabBar(tabController: _tabController),
-            child: Column(mainAxisAlignment: MainAxisAlignment.end, children: [
-              Divider(
-                indent: 25,
-                endIndent: 25,
-                color: Theme.of(context).colorScheme.secondary,
-              ),
-
-              //My current location
-              MyCurrentLocation(),
-
-              //description box
-              MyDescriptionBox(),
-
-              SizedBox(
-                height: 40,
-              ),
-            ]),
+            title: "Sunset Diner",
+            bottom: MyTabBar(tabController: _tabController),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Divider(
+                  indent: 25,
+                  endIndent: 25,
+                  color: Theme.of(context).colorScheme.secondary,
+                ),
+                MyCurrentLocation(),
+                MyDescriptionBox(),
+                SizedBox(height: 40),
+              ],
+            ),
           ),
         ],
         body: Consumer<Restaurant>(

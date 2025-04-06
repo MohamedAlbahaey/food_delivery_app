@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_delivery_app/models/food.dart';
 
-class MyTabBar extends StatelessWidget {
+class MyTabBar extends StatelessWidget implements PreferredSizeWidget {
   final TabController tabController;
 
   const MyTabBar({super.key, required this.tabController});
@@ -9,7 +9,7 @@ class MyTabBar extends StatelessWidget {
   List<Tab> _buildCategoryTabs() {
     return FoodCategory.values.map((category) {
       return Tab(
-        text: captilizeFirstLetter(category.toString().split('.').last),
+        text: _capitalizeFirstLetter(category.toString().split('.').last),
       );
     }).toList();
   }
@@ -19,17 +19,16 @@ class MyTabBar extends StatelessWidget {
     return TabBar(
       controller: tabController,
       tabs: _buildCategoryTabs(),
-      labelStyle: TextStyle(
-        fontSize: 18,
-      ),
-      labelPadding: EdgeInsets.all(0),
+      labelStyle: const TextStyle(fontSize: 18),
+      labelPadding: EdgeInsets.zero,
     );
   }
 
-  //capitalize first letter of string
-  String captilizeFirstLetter(String text) {
+  String _capitalizeFirstLetter(String text) {
     if (text.isEmpty) return "";
-    String capitalizedText = text[0].toUpperCase() + text.substring(1);
-    return capitalizedText;
+    return text[0].toUpperCase() + text.substring(1);
   }
+
+  @override
+  Size get preferredSize => const Size.fromHeight(kToolbarHeight);
 }
