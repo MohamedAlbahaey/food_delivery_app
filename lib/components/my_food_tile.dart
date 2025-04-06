@@ -13,26 +13,42 @@ class MyFoodTile extends StatelessWidget {
       children: [
         GestureDetector(
             onTap: onTap,
-            child: Row(
-              children: [
-                // food details
-                Expanded(
-                  child: Column(
-                    children: [
-                      Text(food.name),
-                      Text("\$${food.price}"),
-                      Text(food.description),
-                    ],
+            child: Padding(
+              padding: const EdgeInsets.all(15.0),
+              child: Row(
+                children: [
+                  // food details
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(food.name),
+                        Text(
+                          "\$${food.price}",
+                          style: TextStyle(
+                            color: Theme.of(context).colorScheme.primary,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        const SizedBox(height: 10),
+                        Text(
+                          food.description,
+                          style: TextStyle(
+                            color: Theme.of(context).colorScheme.inversePrimary,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                ),
-                // food image
-                Expanded(
-                  child: Image.asset(
+                  // food image
+                  Image.asset(
+                    height: 120,
+                    width: 120,
                     food.imageUrl,
                     fit: BoxFit.cover,
                   ),
-                ),
-              ],
+                ],
+              ),
             ))
       ],
     );

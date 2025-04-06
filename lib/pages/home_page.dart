@@ -40,33 +40,19 @@ class _HomePageState extends State<HomePage>
   }
 
   // return list of food items that belong to the category
-  // List<Widget> getFoodInThisCategory(List<Food> fullmenu) {
-  //   return FoodCategory.values.map((category) {
-  //     List<Food> categoryMenu = _filterMenuByCategory(category, fullmenu);
-
-  //     return ListView.builder(
-  //         itemCount: categoryMenu.length,
-  //         physics: const NeverScrollableScrollPhysics(),
-  //         padding: EdgeInsets.zero,
-  //         itemBuilder: (context, index) {
-  //           return MyFoodTile(food: food, onTap: () {});
-  //         });
-  //   }).toList();
-  // }
 
   List<Widget> getFoodInThisCategory(List<Food> fullmenu) {
     return FoodCategory.values.map((category) {
       List<Food> categoryMenu = _filterMenuByCategory(category, fullmenu);
 
-      return Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          ...categoryMenu
-              .map((food) => MyFoodTile(food: food, onTap: () {}))
-              .toList(),
-          const SizedBox(height: 16), // spacing between categories
-        ],
-      );
+      return ListView.builder(
+          itemCount: categoryMenu.length,
+          physics: const NeverScrollableScrollPhysics(),
+          padding: EdgeInsets.zero,
+          itemBuilder: (context, index) {
+            final food = categoryMenu[index];
+            return MyFoodTile(food: food, onTap: () {});
+          });
     }).toList();
   }
 
