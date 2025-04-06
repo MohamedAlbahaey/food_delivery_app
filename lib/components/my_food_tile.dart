@@ -27,7 +27,6 @@ class MyFoodTile extends StatelessWidget {
                           "\$${food.price}",
                           style: TextStyle(
                             color: Theme.of(context).colorScheme.primary,
-                            fontWeight: FontWeight.bold,
                           ),
                         ),
                         const SizedBox(height: 10),

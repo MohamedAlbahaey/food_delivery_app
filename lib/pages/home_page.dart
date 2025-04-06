@@ -7,6 +7,7 @@ import 'package:food_delivery_app/components/my_sliver_app_bar.dart';
 import 'package:food_delivery_app/components/my_tab_bar.dart';
 import 'package:food_delivery_app/models/food.dart';
 import 'package:food_delivery_app/models/restaurant.dart';
+import 'package:food_delivery_app/pages/food_page.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -51,7 +52,12 @@ class _HomePageState extends State<HomePage>
           physics: const NeverScrollableScrollPhysics(),
           itemBuilder: (context, index) {
             final food = categoryMenu[index];
-            return MyFoodTile(food: food, onTap: () {});
+            return MyFoodTile(
+                food: food,
+                onTap: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => FoodPage(food: food))));
           });
     }).toList();
   }
@@ -80,9 +86,12 @@ class _HomePageState extends State<HomePage>
           ),
         ],
         body: Consumer<Restaurant>(
-          builder: (context, restaurant, child) => TabBarView(
-            controller: _tabController,
-            children: getFoodInThisCategory(restaurant.menu),
+          builder: (context, restaurant, child) => Container(
+            color: Theme.of(context).colorScheme.secondary,
+            child: TabBarView(
+              controller: _tabController,
+              children: getFoodInThisCategory(restaurant.menu),
+            ),
           ),
         ),
       ),
