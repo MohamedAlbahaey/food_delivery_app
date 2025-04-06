@@ -14,7 +14,7 @@ class MyFoodTile extends StatelessWidget {
         GestureDetector(
             onTap: onTap,
             child: Padding(
-              padding: const EdgeInsets.all(0),
+              padding: const EdgeInsets.all(15.0),
               child: Row(
                 children: [
                   // food details
@@ -40,16 +40,26 @@ class MyFoodTile extends StatelessWidget {
                       ],
                     ),
                   ),
+
+                  const SizedBox(width: 15),
                   // food image
-                  Image.asset(
-                    height: 120,
-                    width: 120,
-                    food.imageUrl,
-                    fit: BoxFit.cover,
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(8),
+                    child: Image.asset(
+                      food.imageUrl,
+                      height: 120,
+                      width: 120,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ],
               ),
-            ))
+            )),
+        Divider(
+          color: Theme.of(context).colorScheme.tertiary,
+          endIndent: 25,
+          indent: 25,
+        )
       ],
     );
   }
