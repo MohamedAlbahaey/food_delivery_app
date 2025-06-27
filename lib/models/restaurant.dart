@@ -384,6 +384,11 @@ class Restaurant extends ChangeNotifier {
   List<Food> get menu => _menu;
 
   // Method to add food to the cart
+  void addToCart(Food food, int quantity, List<FoodAddon> selectedAddons) {
+    // Check if the food is already in the cart
+    // If yes, update the quantity and selected addons
+    // If no, add a new cart item
+  }
   // Method to remove food from the cart
   // Method to get the total price of the cart
   // Method to get the number of items in the cart
